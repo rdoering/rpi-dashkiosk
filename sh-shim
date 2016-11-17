@@ -1,4 +1,4 @@
-#!/usr/bin/qemu-arm-static /bin/sh.real
+#!/usr/bin/qemu-arm-static /bin/busybox sh
 
 set -o errexit
 
