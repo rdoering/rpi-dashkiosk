@@ -1,7 +1,7 @@
 FROM hypriot/rpi-node
 MAINTAINER Robert Doering <rdoering.info@gmail.com>
 
-RUN npm install -g bower grunt-cli
+RUN npm install --global bower grunt-cli
 RUN apt-get -qq update && apt-get install -qq gifsicle libjpeg-progs optipng libavahi-compat-libdnssd-dev
 
 WORKDIR /dashkiosk

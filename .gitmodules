@@ -1,3 +1,6 @@
 [submodule "dashkiosk"]
 	path = dashkiosk
 	url = https://github.com/vincentbernat/dashkiosk.git
+[submodule "dashkiosk/dashkiosk"]
+	path = dashkiosk/dashkiosk
+	url = https://github.com/vincentbernat/dashkiosk.git
