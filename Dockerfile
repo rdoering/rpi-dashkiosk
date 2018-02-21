@@ -1,11 +1,12 @@
 FROM hypriot/rpi-node
 MAINTAINER Robert Doering <rdoering.info@gmail.com>
 
-RUN apk --update add nodejs gifsicle optipng avahi-dev
 RUN npm install -g bower grunt-cli
+RUN apt-get -qq update && apt-get install -qq gifsicle libjpeg-progs optipng libavahi-compat-libdnssd-dev
 
 WORKDIR /dashkiosk
 COPY ./dashkiosk /dashkiosk/
+
 ENV NPM_CONFIG_LOGLEVEL warn
 RUN npm install && \
     grunt && \
