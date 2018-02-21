@@ -1,4 +1,4 @@
-FROM armhf/rpi-node
+FROM hypriot/rpi-node
 MAINTAINER Robert Doering <rdoering.info@gmail.com>
 
 RUN apk --update add nodejs gifsicle optipng avahi-dev
