@@ -1,19 +1,24 @@
-FROM hypriot/rpi-node
+FROM arm32v7/node
 MAINTAINER Robert Doering <rdoering.info@gmail.com>
 
 RUN npm install --global bower grunt-cli
-RUN apt-get -qq update && apt-get install -qq gifsicle libjpeg-progs optipng libavahi-compat-libdnssd-dev
+RUN apt-get -qq update && apt-get install -qq \
+	gifsicle \
+	libjpeg-progs \
+	optipng \
+	libavahi-compat-libdnssd-dev \
+	avahi-utils
 
 WORKDIR /dashkiosk
 COPY ./dashkiosk /dashkiosk/
+RUN rm -rf /dashkiosk/.git
 
 ENV NPM_CONFIG_LOGLEVEL warn
-RUN npm install && \
-    grunt && \
-    cd dist && \
-    npm install --production && \
-    rm -rf ../node_modules ../build && \
-    npm cache clean
+RUN npm install 
+RUN grunt
+RUN cd dist && npm install --production
+RUN rm -rf node_modules build
+RUN npm cache clean --force
 
 RUN chmod +x /dashkiosk/entrypoint.sh
 
